@@ -13,9 +13,9 @@ git clone https://github.com/electron/electron-quick-start
 cd electron-quick-start
 # Install dependencies
 npm install
-#update main.js
-  replace YOUR_AUTH0_CLIENT and YOUR_AUTH0_DOMAIN with appropriate values
-  ensure that you add YOUR_AUTH0_DOMAIN/mobile to your Allowed Callback URLs in auth0 dashboard 
+#update main.js:
+  # replace YOUR_AUTH0_CLIENT and YOUR_AUTH0_DOMAIN with appropriate values
+  # ensure that you add YOUR_AUTH0_DOMAIN/mobile to your Allowed Callback URLs in auth0 dashboard 
 # Run the app
 npm start
 ```
