@@ -108,7 +108,7 @@ var AuthService = function() {
     }, {
         key: 'isValidAccessCodeCallBackUrl',
         value: function isValidAccessCodeCallBackUrl(callbackUrl) {
-            console.log(this.config.redirectUri);
+            //console.log(this.config.redirectUri);
             return callbackUrl.indexOf(this.config.redirectUri) > -1;
         }
     }], [{
