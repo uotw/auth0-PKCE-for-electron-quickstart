@@ -57,12 +57,12 @@ connection.on('offline', () => {
 
 function getAuthConfig() {
     var authConfig = {
-        clientId: 'XB0zarh086Hr8vx6m3G3sQZz2SAaOjrQ', //new
-        authorizeEndpoint: 'https://ultrasoundjelly.auth0.com/authorize',
-        audience: 'https://ultrasoundjelly.auth0.com/userinfo',
-        scope: 'openid',
-        redirectUri: 'https://ultrasoundjelly.auth0.com/mobile',
-        tokenEndpoint: 'https://ultrasoundjelly.auth0.com/oauth/token'
+        clientId: 'YOUR_AUTH0_CLIENT',
+        authorizeEndpoint: 'YOUR_AUTH0_DOMAIN/authorize',
+        audience: 'YOUR_AUTH0_DOMAIN/userinfo',
+        scope: 'openid', //change scope as needed
+        redirectUri: 'YOUR_AUTH0_DOMAIN/mobile', //make sure this is listed on your auth0 app's dashboard as callback
+        tokenEndpoint: 'YOUR_AUTH0_DOMAIN/oauth/token'
     };
     return authConfig;
 }
