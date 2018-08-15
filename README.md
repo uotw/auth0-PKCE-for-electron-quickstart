@@ -1,18 +1,6 @@
-# electron-quick-start
+# auth0-PKCE-for-electron-quickstart
 
-**Clone and run for a quick way to see Electron in action.**
-
-This is a minimal Electron application based on the [Quick Start Guide](https://electronjs.org/docs/tutorial/quick-start) within the Electron documentation.
-
-**Use this app along with the [Electron API Demos](https://electronjs.org/#get-started) app for API code examples to help you get started.**
-
-A basic Electron application needs just these files:
-
-- `package.json` - Points to the app's main file and lists its details and dependencies.
-- `main.js` - Starts the app and creates a browser window to render HTML. This is the app's **main process**.
-- `index.html` - A web page to render. This is the app's **renderer process**.
-
-You can learn more about each of these components within the [Quick Start Guide](https://electronjs.org/docs/tutorial/quick-start).
+This code is a working example of using auth0 Authorization Code Grant (PKCE) through Universal Login with a basic electron-quickstart.  It also optionally uses electron-online to check when the user loses internet access.
 
 ## To Use
 
@@ -25,21 +13,19 @@ git clone https://github.com/electron/electron-quick-start
 cd electron-quick-start
 # Install dependencies
 npm install
+#update main.js
+  replace YOUR_AUTH0_CLIENT and YOUR_AUTH0_DOMAIN with appropriate values
+  ensure that you add YOUR_AUTH0_DOMAIN/mobile to your Allowed Callback URLs in auth0 dashboard 
 # Run the app
 npm start
 ```
 
-Note: If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
+## Credit
+This code is just a working fork of @adeperio 's gist here: https://gist.github.com/adeperio/73ce6680d4b80b45e624ab62bacfbdca
 
-## Resources for Learning Electron
+## Comments and known issues
+I get 3 Unhandled promise rejections (Access code callback url not expected) in the node console when I authenticate. I think this arises from the non-uri-encoded `config.redirectUri` match in js/AuthService.js: `return callbackUrl.indexOf(this.config.redirectUri) > -1;`, but when that line is changed the code breaks.
 
-- [electronjs.org/docs](https://electronjs.org/docs) - all of Electron's documentation
-- [electronjs.org/community#boilerplates](https://electronjs.org/community#boilerplates) - sample starter apps created by the community
-- [electron/electron-quick-start](https://github.com/electron/electron-quick-start) - a very basic starter Electron app
-- [electron/simple-samples](https://github.com/electron/simple-samples) - small applications with ideas for taking them further
-- [electron/electron-api-demos](https://github.com/electron/electron-api-demos) - an Electron app that teaches you how to use Electron
-- [hokein/electron-sample-apps](https://github.com/hokein/electron-sample-apps) - small demo apps for the various Electron APIs
+Authenticating this way requires an initial opening of an authentication window, then redirecting to the main window afterwards.  Just after authentication you will briefly see "OK" in the auth window before it is programtically closed.  
 
-## License
-
-[CC0 1.0 (Public Domain)](LICENSE.md)
+Using `openid` as the scope in this code results in the delivery of a JWT that should be authenticated and decoded as needed.  I've not included this additional code here.  Here are libraries to handle this task: https://jwt.io/
