@@ -10,7 +10,7 @@ To clone and run this repository you'll need [Git](https://git-scm.com) and [Nod
 # Clone this repository
 git clone https://github.com/uotw/auth0-PKCE-for-electron-quickstart.git
 # Go into the repository
-cd electron-quick-start
+cd auth0-PKCE-for-electron-quickstart/
 # Install dependencies
 npm install
 #update main.js:
